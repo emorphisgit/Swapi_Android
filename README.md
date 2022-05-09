@@ -16,13 +16,11 @@ A device or emulator that runs API level 31.
 
 Add dependency in build.app folder.
 
-    **implementation 'com.github.emorphisgit:Swapi_Android:1.0.0'**
-
-Request URL:- **https://swapi.dev/api/**
+    implementation 'com.github.emorphisgit:Swapi_Android:1.0.0'
 
 Import and call the Swapi client services.
 
-    SWClient.getService();
+    SWAPIInterface swapiInterface = SWClient.getService();
 
 In your activities or fragment you may fire every API call you want.
 
@@ -31,59 +29,53 @@ A People resource is an individual person or character within the Star Wars univ
 
 **/people/** -- get all the people resources
 
-        @GET("people/") 
-		Call<SWModelList<SWPeople>> getAllPeople(); 
+            swapiInterface.getAllPeople();
+
 **/people/:id/** -- get a specific people resource
 
-            @GET("people/{id}") 
-            Call<SWPeople> getPeople(@Path("id") int peopleId); 
+            swapiInterface.getPeople(2);
+
 **/people/schema/** -- view the JSON schema for this resource
 
-		    @GET("people") 
-		    Call<SWModelList<SWPeople>> getPeopleSearch(@Query("search") String 	                search); 
+		    swapiInterface.getPeopleSearch("r2");
+
 **Films**
 A Film resource is a single film.
 
 **/films/** -- get all the film resources
 
-		   @GET("films/")
-           Call<SWModelList<SWFilm>> getAllFilms(); 
+		    swapiInterface.getAllFilms();
 
 **/films/:id/** -- get a specific film resource
 
-            @GET("films/{id}")
-            Call<SWFilm> getFilm(@Path("id") int filmId);
+             swapiInterface.getFilm(2);
 
 **Starships**
 A Starship resource is a single transport craft that has hyperdrive capability.
 
 **/starships/** -- get all the starship resources
 
-            @GET("starships/")
-            Call<SWModelList<SWStarship>> getAllStarships();
+             swapiInterface.getAllStarships();
 
 **/starships/:id/** -- get a specific starship resource
 
-            @GET("starships/{id}")
-            Call<SWStarship> getStarship(@Path("id") int starshipId);
+             swapiInterface.getStarship(2);
 
 **Vehicles**
 
 **/vehicles/** -- get all the vehicle resources
 
-            @GET("vehicles/")
-            Call<SWModelList<SWVehicle>> getAllVehicles();
+              swapiInterface.getAllVehicles();
 
 **/vehicles/:id/** -- get a specific vehicle resource
 
-            @GET("vehicles/{id}")
-            Call<SWVehicle> getVehicle(@Path("id") int vehicleId);
+               swapiInterface.getVehicle(4);
 
 #Inside Library Module API's structure
-**Call API Response: - **
 
-        **Ex:- //Get AllPeople structure**
-            Call<SWModelList<SWPeople>> call = swapiInterface.getAllPeople(); 
+            **Ex:- //Get AllPeople structure**
+        
+             Call<SWModelList<SWPeople>> call = swapiInterface.getAllPeople(); 
 
                 call.enqueue(new Callback<SWModelList<SWPeople>>() { 
 
@@ -109,7 +101,7 @@ A Starship resource is a single transport craft that has hyperdrive capability.
             **Ex:- //Get AllPeople By Id structure**
 
             Call<SWPeople> call = swapiInterface.getPeople(2); 
-                call.enqueue(new Callback<SWPeople>() { 
+            call.enqueue(new Callback<SWPeople>() { 
                 @Override 
             public void onResponse(@NonNull Call<SWPeople> call, @NonNull Response<SWPeople> response) { 
                 Log.d(TAG, response.body() + ""); 
