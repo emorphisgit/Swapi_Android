@@ -30,8 +30,9 @@ android {
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
+
     //Added Swapi library
-    implementation project(path: ':SWAPI_Lib')
+    implementation 'com.github.emorphisgit:Swapi_Android:1.0.0'
     testImplementation 'junit:junit:4.13.2'
     // retrofit for API Calling
     implementation "com.squareup.retrofit2:retrofit:2.9.0"

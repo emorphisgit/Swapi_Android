@@ -132,7 +132,7 @@ public class SWMainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<SWModelList<SWSpecies>> call, Throwable t) {
+            public void onFailure(@NonNull  Call<SWModelList<SWSpecies>> call, @NonNull Throwable t) {
                 call.cancel();
                 Log.d(TAG, t.toString());
                 Toast.makeText(mContext, getResources().getString(R.string.error_msg), Toast.LENGTH_SHORT).show();
@@ -150,7 +150,6 @@ public class SWMainActivity extends AppCompatActivity {
                 Toast.makeText(mContext, getResources().getString(R.string.success_msg), Toast.LENGTH_SHORT).show();
 
             }
-
             @Override
             public void onFailure(@NonNull Call<SWModelList<SWVehicle>> call, @NonNull Throwable t) {
                 call.cancel();

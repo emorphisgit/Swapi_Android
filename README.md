@@ -1,4 +1,3 @@
-
 # SWAPI-Android-SDK
 
 This repository contains the code for the Swapi library.
@@ -15,11 +14,11 @@ A device or emulator that runs API level 31.
 
 # How to use it
 
-Create a separate library of SWAPI and add library in build. App folder.
+Add dependency in build.app folder.
 
-    implementation project (path: ':SWAPI_Lib') 
+    **implementation 'com.github.emorphisgit:Swapi_Android:1.0.0'**
 
-Base Request URL:- https://swapi.dev/api/
+Request URL:- **https://swapi.dev/api/**
 
 Import and call the Swapi client services.
 
@@ -28,18 +27,62 @@ Import and call the Swapi client services.
 In your activities or fragment you may fire every API call you want.
 
 **People**
-
 A People resource is an individual person or character within the Star Wars universe.
-
-#Endpoints
 
 **/people/** -- get all the people resources
 
         @GET("people/") 
 		Call<SWModelList<SWPeople>> getAllPeople(); 
+**/people/:id/** -- get a specific people resource
 
-        Call API Response: - 
+            @GET("people/{id}") 
+            Call<SWPeople> getPeople(@Path("id") int peopleId); 
+**/people/schema/** -- view the JSON schema for this resource
 
+		    @GET("people") 
+		    Call<SWModelList<SWPeople>> getPeopleSearch(@Query("search") String 	                search); 
+**Films**
+A Film resource is a single film.
+
+**/films/** -- get all the film resources
+
+		   @GET("films/")
+           Call<SWModelList<SWFilm>> getAllFilms(); 
+
+**/films/:id/** -- get a specific film resource
+
+            @GET("films/{id}")
+            Call<SWFilm> getFilm(@Path("id") int filmId);
+
+**Starships**
+A Starship resource is a single transport craft that has hyperdrive capability.
+
+**/starships/** -- get all the starship resources
+
+            @GET("starships/")
+            Call<SWModelList<SWStarship>> getAllStarships();
+
+**/starships/:id/** -- get a specific starship resource
+
+            @GET("starships/{id}")
+            Call<SWStarship> getStarship(@Path("id") int starshipId);
+
+**Vehicles**
+
+**/vehicles/** -- get all the vehicle resources
+
+            @GET("vehicles/")
+            Call<SWModelList<SWVehicle>> getAllVehicles();
+
+**/vehicles/:id/** -- get a specific vehicle resource
+
+            @GET("vehicles/{id}")
+            Call<SWVehicle> getVehicle(@Path("id") int vehicleId);
+
+#Inside Library Module API's structure
+**Call API Response: - **
+
+        **Ex:- //Get AllPeople structure**
             Call<SWModelList<SWPeople>> call = swapiInterface.getAllPeople(); 
 
                 call.enqueue(new Callback<SWModelList<SWPeople>>() { 
@@ -61,14 +104,9 @@ A People resource is an individual person or character within the Star Wars univ
 
                } 
 
-        });
-
-**/people/:id/** -- get a specific people resource
-
-            @GET("people/{id}") 
-            Call<SWPeople> getPeople(@Path("id") int peopleId); 
-
-            Call API Response: - 
+            });
+            
+            **Ex:- //Get AllPeople By Id structure**
 
             Call<SWPeople> call = swapiInterface.getPeople(2); 
                 call.enqueue(new Callback<SWPeople>() { 
@@ -79,21 +117,16 @@ A People resource is an individual person or character within the Star Wars univ
             } 
  
             @Override 
-            public void onFailure(@NonNull Call<SWPeople> call, @NonNull Throwable t) { 
-            call.cancel(); 
-            Log.d(TAG, t.toString()); 
+                public void onFailure(@NonNull Call<SWPeople> call, @NonNull Throwable t) { 
+                call.cancel(); 
+                Log.d(TAG, t.toString()); 
         
-            } 
-        });
-
-**/people/schema/** -- view the JSON schema for this resource
-
-		    @GET("people") 
-		    Call<SWModelList<SWPeople>> getPeopleSearch(@Query("search") String 	                search); 
- 
-            Call API Response: - 
-
-            Call<SWModelList<SWPeople>> call = swapiInterface.getPeopleSearch("r2"); 
+                } 
+             });
+             
+            **Ex:- //Get AllPeople Search Schema structure**
+            
+            Call<SWModelList<SWPeople>> call = swapiInterface.getPeopleSearch("r2");
             call.enqueue(new Callback<SWModelList<SWPeople>>() { 
             
             @Override 
