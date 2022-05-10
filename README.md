@@ -25,6 +25,7 @@ Import and call the Swapi client services.
 In your activities or fragment you may fire every API call you want.
 
 **People**
+
 A People resource is an individual person or character within the Star Wars universe.
 
 **/people/** -- get all the people resources
@@ -40,6 +41,8 @@ A People resource is an individual person or character within the Star Wars univ
 		    swapiInterface.getPeopleSearch("r2");
 
 **Films**
+
+
 A Film resource is a single film.
 
 **/films/** -- get all the film resources
@@ -51,6 +54,8 @@ A Film resource is a single film.
              swapiInterface.getFilm(2);
 
 **Starships**
+
+
 A Starship resource is a single transport craft that has hyperdrive capability.
 
 **/starships/** -- get all the starship resources
@@ -62,6 +67,7 @@ A Starship resource is a single transport craft that has hyperdrive capability.
              swapiInterface.getStarship(2);
 
 **Vehicles**
+
 
 **/vehicles/** -- get all the vehicle resources
 
@@ -135,7 +141,7 @@ A Starship resource is a single transport craft that has hyperdrive capability.
         });   
 
 
-#Getting Started
+**Getting Started**
 
         Install Android Studio, if you don't already have it. 
         Download the sample. 
