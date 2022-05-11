@@ -18,6 +18,11 @@ Add dependency in build.app folder.
 
     implementation 'com.github.emorphisgit:Swapi_Android:1.0.0'
 
+And use maven plugin 
+
+    maven { url "https://jitpack.io"}
+
+
 Import and call the Swapi client services.
 
     SWAPIInterface swapiInterface = SWClient.getService();
