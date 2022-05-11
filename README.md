@@ -16,7 +16,7 @@ A device or emulator that runs API level 31.
 
 Add dependency in build.app folder.
 
-    implementation 'com.github.emorphisgit:Swapi_Android:1.0.1'
+    implementation 'com.github.emorphisgit:Swapi_Android:1.0.3'
 
 And use maven plugin 
 
