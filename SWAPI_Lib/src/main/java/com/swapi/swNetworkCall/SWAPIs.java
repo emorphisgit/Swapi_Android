@@ -21,8 +21,8 @@ public interface SWAPIs {
     @GET("people/")
     Call<SWModelList<SWPeople>> getPeoples();
 
-    @GET("people/{page}")
-    Call<SWPeople> getPeoplesByPages(@Path("page") int pages);
+    @GET("people")
+    Call<SWModelList<SWPeople>> getPeoplesByPages(@Query("page") int pages);
 
     @GET("people/{id}")
     Call<SWPeople> getPeopleByID(@Path("id") int peopleId);
@@ -30,6 +30,7 @@ public interface SWAPIs {
     //search people using query
     @GET("people")
     Call<SWModelList<SWPeople>> getPeopleSearch(@Query("search") String search);
+
 
     @GET("films/")
     Call<SWModelList<SWFilm>> getFilms();
@@ -40,8 +41,9 @@ public interface SWAPIs {
     @GET("films")
     Call<SWModelList<SWFilm>> getFilmSearch(@Query("search") String search);
 
-    @GET("films/{page}")
-    Call<SWFilm> getFilmsByPages(@Path("page") int pages);
+    @GET("films")
+    Call<SWModelList<SWFilm>> getFilmsByPages(@Query("page") int pages);
+
 
     @GET("starships/")
     Call<SWModelList<SWStarship>> getStarships();
@@ -52,8 +54,9 @@ public interface SWAPIs {
     @GET("starships")
     Call<SWModelList<SWStarship>> getStarshipSearch(@Query("search") String search);
 
-    @GET("starships/{page}")
-    Call<SWStarship> getStarshipByPages(@Path("page") int pages);
+    @GET("starships")
+    Call<SWModelList<SWStarship>> getStarshipByPages(@Query("page") int pages);
+
 
 
     @GET("vehicles/")
@@ -65,8 +68,9 @@ public interface SWAPIs {
     @GET("vehicles")
     Call<SWModelList<SWVehicle>> getVehicleSearch(@Query("search") String search);
 
-    @GET("vehicles/{page}")
-    Call<SWVehicle> getVehicleByPages(@Path("page") int pages);
+    @GET("vehicles")
+    Call<SWModelList<SWVehicle>> getVehicleByPages(@Query("page") int pages);
+
 
     @GET("species/")
     Call<SWModelList<SWSpecies>> getSpecies();
@@ -77,8 +81,8 @@ public interface SWAPIs {
     @GET("species")
     Call<SWModelList<SWSpecies>> getSpeciesSearch(@Query("search") String search);
 
-    @GET("species/{page}")
-    Call<SWSpecies> getSpeciesByPages(@Path("page") int pages);
+    @GET("species")
+    Call<SWModelList<SWSpecies>> getSpeciesByPages(@Query("page") int pages);
 
 
     @GET("planets/")
@@ -90,8 +94,9 @@ public interface SWAPIs {
     @GET("planets")
     Call<SWModelList<SWPlanet>> getPlanetSearch(@Query("search") String search);
 
-    @GET("planets/{page}")
-    Call<SWPlanet> getPlanesByPages(@Path("page") int pages);
+    @GET("planets")
+    Call<SWModelList<SWPlanet>> getPlanesByPages(@Query("page") int pages);
+
 
     @GET("/")
     public void getRootUrls(Callback<SWRoot> callback);
