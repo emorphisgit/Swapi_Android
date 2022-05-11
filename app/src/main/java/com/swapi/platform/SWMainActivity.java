@@ -17,7 +17,7 @@ import com.swapi.swModels.SWPlanet;
 import com.swapi.swModels.SWSpecies;
 import com.swapi.swModels.SWStarship;
 import com.swapi.swModels.SWVehicle;
-import com.swapi.swNetworkCall.SWAPIInterface;
+import com.swapi.swNetworkCall.SWAPIs;
 import com.swapi.swNetworkCall.SWClient;
 
 import retrofit2.Call;
@@ -31,7 +31,7 @@ public class SWMainActivity extends AppCompatActivity {
     public Context mContext;
     AppCompatButton mBtnPeople, mBtnFilms, mBtnPlanets;
     AppCompatButton mBtnVehicles, mBtnSpecies, mBtnStarShips;
-    private SWAPIInterface swapiInterface;
+    private SWAPIs mSWAPIs;
     AppCompatButton mBtnPeopleID, mBtnFilmsID, mBtnPlanetsID;
     AppCompatButton mBtnSpaceShipsId, mBtnVehiclesId, mBtnSpeciesId;
 
@@ -42,7 +42,7 @@ public class SWMainActivity extends AppCompatActivity {
 
         mContext = SWMainActivity.this;
         //Call Swapi client services
-        swapiInterface = SWClient.getService();
+         mSWAPIs = SWClient.getInstanceServices();
 
         //initialize all views
         initializationViews();
@@ -81,7 +81,7 @@ public class SWMainActivity extends AppCompatActivity {
 
     //Call SW for all People
     private void callPeoplesAPI() {
-        Call<SWModelList<SWPeople>> call = swapiInterface.getAllPeople();
+        Call<SWModelList<SWPeople>> call = mSWAPIs.getPeoples();
         call.enqueue(new Callback<SWModelList<SWPeople>>() {
             @Override
             public void onResponse(@NonNull Call<SWModelList<SWPeople>> call, @NonNull Response<SWModelList<SWPeople>> response) {
@@ -101,7 +101,7 @@ public class SWMainActivity extends AppCompatActivity {
 
     //Call SW for all Films
     private void callFilmsAPI() {
-        Call<SWModelList<SWFilm>> call = swapiInterface.getAllFilms();
+        Call<SWModelList<SWFilm>> call = mSWAPIs.getFilms();
         call.enqueue(new Callback<SWModelList<SWFilm>>() {
             @Override
             public void onResponse(@NonNull Call<SWModelList<SWFilm>> call, @NonNull Response<SWModelList<SWFilm>> response) {
@@ -122,7 +122,7 @@ public class SWMainActivity extends AppCompatActivity {
 
     //Call SW for all Species
     private void callSpeciesAPI() {
-        Call<SWModelList<SWSpecies>> call = swapiInterface.getAllSpecies();
+        Call<SWModelList<SWSpecies>> call = mSWAPIs.getSpecies();
         call.enqueue(new Callback<SWModelList<SWSpecies>>() {
             @Override
             public void onResponse(@NonNull Call<SWModelList<SWSpecies>> call, @NonNull Response<SWModelList<SWSpecies>> response) {
@@ -142,7 +142,7 @@ public class SWMainActivity extends AppCompatActivity {
 
     //Call SW for all Vehicles
     private void callVehiclesAPI() {
-        Call<SWModelList<SWVehicle>> call = swapiInterface.getAllVehicles();
+        Call<SWModelList<SWVehicle>> call = mSWAPIs.getVehicles();
         call.enqueue(new Callback<SWModelList<SWVehicle>>() {
             @Override
             public void onResponse(@NonNull Call<SWModelList<SWVehicle>> call, @NonNull Response<SWModelList<SWVehicle>> response) {
@@ -162,7 +162,7 @@ public class SWMainActivity extends AppCompatActivity {
 
     //Call SW for all StarShips
     private void callStarShipsAPI() {
-        Call<SWModelList<SWStarship>> call = swapiInterface.getAllStarships();
+        Call<SWModelList<SWStarship>> call = mSWAPIs.getStarships();
         call.enqueue(new Callback<SWModelList<SWStarship>>() {
             @Override
             public void onResponse(@NonNull Call<SWModelList<SWStarship>> call, @NonNull Response<SWModelList<SWStarship>> response) {
@@ -183,7 +183,7 @@ public class SWMainActivity extends AppCompatActivity {
 
     //Call SW for all Planets
     private void callPlanetsAPI() {
-        Call<SWModelList<SWPlanet>> call = swapiInterface.getAllPlanets();
+        Call<SWModelList<SWPlanet>> call = mSWAPIs.getPlanets();
         call.enqueue(new Callback<SWModelList<SWPlanet>>() {
             @Override
             public void onResponse(@NonNull Call<SWModelList<SWPlanet>> call, @NonNull Response<SWModelList<SWPlanet>> response) {
@@ -206,7 +206,7 @@ public class SWMainActivity extends AppCompatActivity {
 
     //call vehicle by ID
     private void callVehiclesID() {
-        Call<SWVehicle> call = swapiInterface.getVehicle(4);
+        Call<SWVehicle> call = mSWAPIs.getVehicleByID(4);
         call.enqueue(new Callback<SWVehicle>() {
             @Override
             public void onResponse(@NonNull Call<SWVehicle> call, @NonNull Response<SWVehicle> response) {
@@ -226,7 +226,7 @@ public class SWMainActivity extends AppCompatActivity {
 
     //Call species by ID
     private void callSpeciesID() {
-        Call<SWSpecies> call = swapiInterface.getSpecies(2);
+        Call<SWSpecies> call = mSWAPIs.getSpeciesByID(2);
         call.enqueue(new Callback<SWSpecies>() {
             @Override
             public void onResponse(@NonNull Call<SWSpecies> call, @NonNull Response<SWSpecies> response) {
@@ -246,7 +246,7 @@ public class SWMainActivity extends AppCompatActivity {
 
     //Call starships by ID
     private void callStarShipID() {
-        Call<SWStarship> call = swapiInterface.getStarship(2);
+        Call<SWStarship> call = mSWAPIs.getStarshipByID(2);
         call.enqueue(new Callback<SWStarship>() {
             @Override
             public void onResponse(@NonNull Call<SWStarship> call, @NonNull Response<SWStarship> response) {
@@ -266,7 +266,7 @@ public class SWMainActivity extends AppCompatActivity {
 
     //Call Planets By ID
     private void callPlanetsID() {
-        Call<SWPlanet> call = swapiInterface.getPlanet(2);
+        Call<SWPlanet> call = mSWAPIs.getPlanetByID(2);
         call.enqueue(new Callback<SWPlanet>() {
             @Override
             public void onResponse(@NonNull Call<SWPlanet> call, @NonNull Response<SWPlanet> response) {
@@ -286,7 +286,7 @@ public class SWMainActivity extends AppCompatActivity {
 
     //Call Films by ID
     private void callFilmsID() {
-        Call<SWFilm> call = swapiInterface.getFilm(2);
+        Call<SWFilm> call = mSWAPIs.getFilmByID(2);
         call.enqueue(new Callback<SWFilm>() {
             @Override
             public void onResponse(@NonNull Call<SWFilm> call, @NonNull Response<SWFilm> response) {
@@ -306,7 +306,7 @@ public class SWMainActivity extends AppCompatActivity {
 
     //Call people by ID--->
     private void callPeopleID() {
-        Call<SWPeople> call = swapiInterface.getPeople(2);
+        Call<SWPeople> call = mSWAPIs.getPeopleByID(2);
         call.enqueue(new Callback<SWPeople>() {
             @Override
             public void onResponse(@NonNull Call<SWPeople> call, @NonNull Response<SWPeople> response) {
@@ -326,7 +326,7 @@ public class SWMainActivity extends AppCompatActivity {
 
     //Call people search text--->All search text working same, this is only people search
     private void callPeopleSearch() {
-        Call<SWModelList<SWPeople>> call = swapiInterface.getPeopleSearch("r2");
+        Call<SWModelList<SWPeople>> call = mSWAPIs.getPeopleSearch("r2");
         call.enqueue(new Callback<SWModelList<SWPeople>>() {
             @Override
             public void onResponse(@NonNull Call<SWModelList<SWPeople>> call, @NonNull Response<SWModelList<SWPeople>> response) {
