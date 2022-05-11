@@ -43,8 +43,7 @@ public class SWMainActivity extends AppCompatActivity {
         mContext = SWMainActivity.this;
         //Call Swapi client services
          mSWAPIs = SWClient.getInstanceServices();
-
-        //initialize all views
+         //initialize all views
         initializationViews();
     }
 
