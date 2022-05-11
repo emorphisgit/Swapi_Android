@@ -342,7 +342,26 @@ public class SWMainActivity extends AppCompatActivity {
             }
         });
     }
+    //Call film search text--->All search text working same, this is only film search
 
+    private void callFilmSearch() {
+        Call<SWModelList<SWFilm>> call = mSWAPIs.getFilmSearch("");
+        call.enqueue(new Callback<SWModelList<SWFilm>>() {
+            @Override
+            public void onResponse(@NonNull Call<SWModelList<SWFilm>> call, @NonNull Response<SWModelList<SWFilm>> response) {
+                Log.d(TAG, response.body() + "");
+                Toast.makeText(mContext, getResources().getString(R.string.success_msg), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<SWModelList<SWFilm>> call, @NonNull Throwable t) {
+                call.cancel();
+                Log.d(TAG, t.toString());
+                Toast.makeText(mContext, getResources().getString(R.string.error_msg), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
 }
 
 
