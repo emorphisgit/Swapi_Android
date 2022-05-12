@@ -21,14 +21,14 @@ public interface SWAPIs {
     @GET("people/")
     Call<SWModelList<SWPeople>> getPeoples();
 
-    @GET("people")
+    @GET("people/")
     Call<SWModelList<SWPeople>> getPeoplesByPages(@Query("page") int pages);
 
     @GET("people/{id}")
     Call<SWPeople> getPeopleByID(@Path("id") int peopleId);
 
     //search people using query
-    @GET("people")
+    @GET("people/")
     Call<SWModelList<SWPeople>> getPeopleSearch(@Query("search") String search);
 
 
@@ -38,10 +38,10 @@ public interface SWAPIs {
     @GET("films/{id}")
     Call<SWFilm> getFilmByID(@Path("id") int filmId);
 
-    @GET("films")
+    @GET("films/")
     Call<SWModelList<SWFilm>> getFilmSearch(@Query("search") String search);
 
-    @GET("films")
+    @GET("films/")
     Call<SWModelList<SWFilm>> getFilmsByPages(@Query("page") int pages);
 
 
@@ -51,10 +51,10 @@ public interface SWAPIs {
     @GET("starships/{id}")
     Call<SWStarship> getStarshipByID(@Path("id") int starshipId);
 
-    @GET("starships")
+    @GET("starships/")
     Call<SWModelList<SWStarship>> getStarshipSearch(@Query("search") String search);
 
-    @GET("starships")
+    @GET("starships/")
     Call<SWModelList<SWStarship>> getStarshipByPages(@Query("page") int pages);
 
 
@@ -65,10 +65,10 @@ public interface SWAPIs {
     @GET("vehicles/{id}")
     Call<SWVehicle> getVehicleByID(@Path("id") int vehicleId);
 
-    @GET("vehicles")
+    @GET("vehicles/")
     Call<SWModelList<SWVehicle>> getVehicleSearch(@Query("search") String search);
 
-    @GET("vehicles")
+    @GET("vehicles/")
     Call<SWModelList<SWVehicle>> getVehicleByPages(@Query("page") int pages);
 
 
@@ -78,10 +78,10 @@ public interface SWAPIs {
     @GET("species/{id}")
     Call<SWSpecies> getSpeciesByID(@Path("id") int speciesId);
 
-    @GET("species")
+    @GET("species/")
     Call<SWModelList<SWSpecies>> getSpeciesSearch(@Query("search") String search);
 
-    @GET("species")
+    @GET("species/")
     Call<SWModelList<SWSpecies>> getSpeciesByPages(@Query("page") int pages);
 
 
@@ -91,11 +91,11 @@ public interface SWAPIs {
     @GET("planets/{id}")
     Call<SWPlanet> getPlanetByID(@Path("id") int planetId);
 
-    @GET("planets")
+    @GET("planets/")
     Call<SWModelList<SWPlanet>> getPlanetSearch(@Query("search") String search);
 
-    @GET("planets")
-    Call<SWModelList<SWPlanet>> getPlanesByPages(@Query("page") int pages);
+    @GET("planets/")
+    Call<SWModelList<SWPlanet>> getPlanetByPages(@Query("page") int pages);
 
 
     @GET("/")
